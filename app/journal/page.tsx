@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Countdown, NotifyForm } from "@/components/countdown";
-import { Horizon, MoonPhase, RestMark } from "@/components/motifs";
+import { Horizon, MoonPhase, BrandMark } from "@/components/motifs";
 
 export const metadata: Metadata = { title: "The Movements · Astra's Interlude" };
 
@@ -51,7 +51,7 @@ export default function JournalPage() {
 
       <section className="mt-16 grid md:grid-cols-12 gap-10" aria-labelledby="next-heading">
         <div className="md:col-span-5">
-          <RestMark size={24} className="text-accent" />
+          <BrandMark size={40} className="text-accent" />
           <h2 id="next-heading" className="mt-6 text-3xl sm:text-4xl">The next movement</h2>
           <p className="mt-4 text-muted prose-measure">
             The third movement opens at the December solstice, the longest night of the year. Leave your email and

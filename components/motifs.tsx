@@ -1,14 +1,14 @@
 type P = { className?: string; size?: number; title?: string };
 
-export function RestMark({ className, size = 18, title }: P) {
-  // A quarter rest, drawn as a single stroke
+// The Astra's Interlude mark (from /public/brand/icon-mark-*.svg), coloured by currentColor
+export const BRAND_MARK_PATH =
+  "M 57,-15 L 59.6,-9.5 L 65,-7 L 59.6,-4.5 L 57,1 L 54.4,-4.5 L 49,-7 L 54.4,-9.5 Z M 55,6 C 68,14 70,32 50,50 C 44,32 46,16 55,6 Z M 52,58 C 74,66 112,84 64,118 C 42,106 44,76 52,58 Z M 60,126 C 48,134 10,146 32,176 C 46,158 56,140 60,126 Z";
+
+export function BrandMark({ className, size = 18, title }: P) {
   return (
-    <svg className={className} width={size * 0.55} height={size} viewBox="0 0 11 20" aria-hidden={!title} role={title ? "img" : undefined}>
+    <svg className={className} width={(size * 120) / 242} height={size} viewBox="0 -22 120 242" aria-hidden={!title} role={title ? "img" : undefined}>
       {title && <title>{title}</title>}
-      <path
-        d="M3 1 L8 6.5 L4.5 10 L8.5 14.5 C6 13.5 3.5 14.5 5.5 19 C2 16.5 2 13 5.5 12.8 L2.5 9 L6 5.5 Z"
-        fill="currentColor"
-      />
+      <path d={BRAND_MARK_PATH} fill="currentColor" />
     </svg>
   );
 }

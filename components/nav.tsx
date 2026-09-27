@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { useCart, useTheme } from "./providers";
 import { AudioToggle } from "./audio-toggle";
-import { RestMark } from "./motifs";
+import { BrandMark } from "./motifs";
 import type { Movement } from "@/lib/products";
 
 function NavInner() {
@@ -55,9 +55,9 @@ function NavInner() {
   return (
     <header className="sticky top-0 z-40 bg-bg/90 backdrop-blur border-b border-line">
       <div className="mx-auto max-w-6xl px-4 sm:px-8 h-16 flex items-center gap-6">
-        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Astra's Interlude, home">
-          <RestMark size={18} className="text-accent" />
-          <span className="display text-xl">Astra&apos;s Interlude</span>
+        <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Astra's Interlude, home">
+          <BrandMark size={30} className="text-ink" />
+          <span className="display text-xl tracking-[0.01em]">Astra&rsquo;s Interlude</span>
         </Link>
         <nav aria-label="Main" className="hidden lg:flex items-center gap-6 text-[0.95rem] ml-6">
           {links}

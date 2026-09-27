@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RestMark } from "@/components/motifs";
+import { BrandMark } from "@/components/motifs";
 
 export const metadata: Metadata = { title: "About · Astra's Interlude" };
 
@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-8 pt-16 grid md:grid-cols-12 gap-10">
       <div className="md:col-span-7 md:col-start-2">
-        <RestMark size={28} className="text-accent" />
+        <BrandMark size={44} className="text-accent" />
         <h1 className="mt-8 text-5xl sm:text-6xl">About</h1>
         <p className="mt-10 pullquote text-2xl sm:text-3xl leading-snug prose-measure">
           Astra is a star. An interlude is the short piece played between two longer ones.

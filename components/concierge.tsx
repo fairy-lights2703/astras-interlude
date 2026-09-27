@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { products, priceRange, movementName, Product } from "@/lib/products";
 import { stylist } from "@/lib/stylist";
 import { NEXT_EVENT } from "@/lib/events";
-import { RestMark } from "./motifs";
+import { BrandMark } from "./motifs";
 
 type Mode = "menu" | "wear" | "product" | "contact";
 type Msg = { from: "bot" | "you"; text?: string; products?: { product: Product; why?: string }[]; node?: React.ReactNode };
@@ -180,7 +180,7 @@ export function Concierge() {
         aria-controls="concierge"
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 rounded-full bg-ink text-bg pl-4 pr-5 py-3 shadow-lg shadow-black/10"
       >
-        <RestMark size={16} className="text-accent" />
+        <BrandMark size={20} className="text-accent" />
         {open ? "Close" : "Concierge"}
       </button>
 

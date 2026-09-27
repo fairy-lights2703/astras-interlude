@@ -16,9 +16,16 @@ const fraunces = Fraunces({
 });
 const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-work-sans", display: "swap" });
 
+const description = "A fashion house that releases movements, not seasons. Aubade for dawn, Nocturne for night.";
+
+const prodHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(prodHost ? `https://${prodHost}` : "http://localhost:3000"),
   title: "Astra's Interlude",
-  description: "A fashion house that releases movements, not seasons. Aubade for dawn, Nocturne for night.",
+  description,
+  openGraph: { title: "Astra's Interlude", description, siteName: "Astra's Interlude", type: "website" },
+  twitter: { card: "summary_large_image", title: "Astra's Interlude", description },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

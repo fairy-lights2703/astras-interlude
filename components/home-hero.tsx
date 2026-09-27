@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { generateSky } from "@/lib/sky";
-import { RestMark } from "./motifs";
+import { BrandMark } from "./motifs";
 
 const W = 1200;
 const H = 700;
@@ -91,7 +91,7 @@ export function HomeHero() {
           className="relative h-full mx-auto max-w-6xl px-4 sm:px-8 flex flex-col justify-end pb-[18vh]"
           style={{ color: dark ? "#EDEAF2" : "#3B2142", transition: "color 500ms ease" }}
         >
-          <RestMark size={26} className="mb-6 text-[#B8924A]" />
+          <BrandMark size={48} className="mb-6 text-[#B8924A]" />
           <h1 className="text-5xl sm:text-7xl max-w-3xl">
             {dark ? (
               <>
