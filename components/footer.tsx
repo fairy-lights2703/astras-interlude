@@ -15,6 +15,7 @@ export function Footer() {
           <Link href="/collections" className="hover:text-ink">Collections</Link>
           <Link href="/constellation-fit" className="hover:text-ink">Constellation Fit</Link>
           <Link href="/journal" className="hover:text-ink">The Movements</Link>
+          <Link href="/concierge" className="hover:text-ink">Concierge</Link>
           <Link href="/about" className="hover:text-ink">About</Link>
         </nav>
         <p className="pullquote text-base">ad astra abyssosque</p>

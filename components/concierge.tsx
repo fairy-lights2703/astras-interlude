@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { products, priceRange, movementName, Product } from "@/lib/products";
 import { stylist } from "@/lib/stylist";
@@ -57,8 +58,9 @@ function detectIntent(t: string): string | null {
   return null;
 }
 
-export function Concierge() {
-  const [open, setOpen] = useState(false);
+export function Concierge({ inline = false }: { inline?: boolean }) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(inline);
   const [mode, setMode] = useState<Mode>("menu");
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -76,10 +78,15 @@ export function Concierge() {
   }, [msgs, open]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => !inline && e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [inline]);
+
+  // Following a link closes the floating panel; the standalone page stays as it is
+  const close = () => {
+    if (!inline) setOpen(false);
+  };
 
   const say = (...m: Msg[]) => setMsgs((prev) => [...prev, ...m]);
 
@@ -103,7 +110,7 @@ export function Concierge() {
         say({
           from: "bot",
           text: `We don't run sales. Our next movement arrives with ${NEXT_EVENT.name}, on ${NEXT_EVENT.label}. The Movements page has the countdown, and you can leave your email there to hear the moment it opens.`,
-          node: <Link href="/journal" className="link" onClick={() => setOpen(false)}>See the countdown</Link>,
+          node: <Link href="/journal" className="link" onClick={close}>See the countdown</Link>,
         });
         break;
       case "orders":
@@ -171,8 +178,12 @@ export function Concierge() {
   const placeholder =
     mode === "wear" ? "A new job, a farewell, a wedding…" : mode === "product" ? "A piece or a word" : mode === "contact" ? "Your email and a short note" : "Type a message";
 
+  // The standalone /concierge page renders its own inline copy
+  if (!inline && pathname === "/concierge") return null;
+
   return (
     <>
+      {!inline && (
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -183,17 +194,24 @@ export function Concierge() {
         <BrandMark size={20} className="text-accent" />
         {open ? "Close" : "Concierge"}
       </button>
+      )}
 
       {open && (
         <section
           id="concierge"
-          role="dialog"
+          role={inline ? "region" : "dialog"}
           aria-label="The Interlude Concierge"
-          className="fixed z-50 bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 sm:w-[380px] max-h-[70vh] flex flex-col rounded-2xl border border-line bg-surface shadow-xl shadow-black/15"
+          className={
+            inline
+              ? "h-[min(640px,70vh)] flex flex-col rounded-2xl border border-line bg-surface"
+              : "fixed z-50 bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 sm:w-[380px] max-h-[70vh] flex flex-col rounded-2xl border border-line bg-surface shadow-xl shadow-black/15"
+          }
         >
-          <header className="px-5 pt-4 pb-3 border-b border-line">
-            <h2 className="text-lg">The Interlude Concierge</h2>
-          </header>
+          {!inline && (
+            <header className="px-5 pt-4 pb-3 border-b border-line">
+              <h2 className="text-lg">The Interlude Concierge</h2>
+            </header>
+          )}
           <div ref={scroller} className="flex-1 overflow-y-auto px-5 py-4 space-y-3 text-[0.95rem]" aria-live="polite">
             {msgs.map((m, i) => (
               <div key={i} className={m.from === "you" ? "flex justify-end" : ""}>
@@ -203,7 +221,7 @@ export function Concierge() {
                     <ul className="space-y-2">
                       {m.products.map(({ product, why }) => (
                         <li key={product.slug} className="border-l border-accent pl-3">
-                          <Link href={`/product/${product.slug}`} className="link" onClick={() => setOpen(false)}>
+                          <Link href={`/product/${product.slug}`} className="link" onClick={close}>
                             {product.name}
                           </Link>
                           <span className="block text-muted text-sm">{why ?? product.hook}</span>

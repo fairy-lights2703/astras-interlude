@@ -15,7 +15,7 @@ async function loadFont(family: string, text: string): Promise<ArrayBuffer | nul
 }
 
 const NAME = "Astra’s Interlude";
-const TAGLINE = "Ad Astra Abyssoque"; // as set in the stacked logo
+const TAGLINE = "Ad Astra Abyssosque"; // as set in the stacked logo
 
 // Social preview, laid out like /public/brand/logo-stacked-cream.svg on the night background
 export async function brandCard(width: number, height: number) {
