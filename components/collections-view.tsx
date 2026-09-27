@@ -24,7 +24,7 @@ const INTRO: Record<Movement | "all", { title: string; body: string }> = {
 export function CollectionsView() {
   const params = useSearchParams();
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   const m = params.get("movement");
   const movement: Movement | null = m === "aubade" || m === "nocturne" ? m : null;
@@ -32,9 +32,11 @@ export function CollectionsView() {
   const category = CATS.find((x) => x === c) ?? null;
 
   // Arriving on a movement's collection (by any link) sets the theme to match
+  // Only when the movement in the URL changes, so it never fights a nav click that's mid-navigation
   useEffect(() => {
     if (movement && movement !== document.documentElement.dataset.theme) setTheme(movement);
-  }, [movement, theme, setTheme]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movement]);
 
   const set = (key: string, value: string | null) => {
     const next = new URLSearchParams(params.toString());
