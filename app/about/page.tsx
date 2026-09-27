@@ -17,9 +17,8 @@ export default function AboutPage() {
           Each piece begins with a feeling rather than a trend.
         </p>
         <p className="mt-5 text-lg prose-measure">
-          We work with an AI collaborator the way a composer might work with an instrument. It helps us find shapes, draw
-          skies and write down why a piece exists. We leave that reasoning visible on every page, because we&apos;d rather
-          you knew.
+          We work the way a composer might: a feeling first, then a shape, then the quiet between the notes. Every page
+          carries a note on why its piece exists, because we&apos;d rather you knew.
         </p>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { ConstellationMark, Horizon, MoonPhase } from "@/components/motifs";
 import { getProduct } from "@/lib/products";
 import { EntryLink } from "@/components/entry-link";
 
-const featured = ["the-last-star-slip-dress", "deep-sky-gown", "morning-bell-pendant", "rest-note-cufflinks"].map((s) => getProduct(s)!);
+const featured = ["the-last-star-slip-dress", "deep-sky-gown", "morning-bell-pendant", "treblemaker-cuffs"].map((s) => getProduct(s)!);
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 sm:px-8 pt-24 grid md:grid-cols-12 gap-8">
         <p className="md:col-span-7 md:col-start-2 text-2xl sm:text-3xl display leading-snug">
           Astra&apos;s Interlude doesn&apos;t release seasons. We release movements, named for the two halves of a day. Every
-          piece starts from a feeling, and an AI collaborator helps us find its shape. You can see that reasoning on every page.
+          piece starts from a feeling, and is shaped slowly until it fits one.
         </p>
       </section>
 

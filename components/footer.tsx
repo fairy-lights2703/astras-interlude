@@ -17,7 +17,7 @@ export function Footer() {
           <Link href="/journal" className="hover:text-ink">The Movements</Link>
           <Link href="/about" className="hover:text-ink">About</Link>
         </nav>
-        <p>A competition prototype. Nothing here is charged or shipped.</p>
+        <p className="pullquote text-base">ad astra abyssosque</p>
       </div>
     </footer>
   );

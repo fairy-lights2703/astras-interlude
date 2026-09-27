@@ -170,8 +170,8 @@ export const products: Product[] = [
     shape: "cape",
   },
   {
-    slug: "rest-note-cufflinks",
-    name: "Rest Note Cufflinks",
+    slug: "treblemaker-cuffs",
+    name: "Treblemaker Cuffs",
     movement: "nocturne",
     category: "Jewellery",
     kind: "Jewellery / accessory",

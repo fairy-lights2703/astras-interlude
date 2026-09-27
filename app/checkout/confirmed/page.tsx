@@ -8,7 +8,7 @@ import { ConstellationMark } from "@/components/motifs";
 export default function ConfirmedPage() {
   const reduce = useReducedMotion();
   const [ref, setRef] = useState("");
-  useEffect(() => setRef("AI-" + Math.random().toString(36).slice(2, 8).toUpperCase()), []);
+  useEffect(() => setRef("ASTRA-" + Math.random().toString(36).slice(2, 8).toUpperCase()), []);
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-8 pt-24 min-h-[60vh]">

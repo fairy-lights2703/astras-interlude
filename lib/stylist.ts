@@ -39,7 +39,7 @@ const RULES: Rule[] = [
     picks: [
       { slug: "stardust-veil", why: "Made for quiet grief, soft enough to wear in public." },
       { slug: "whisper-clutch", why: "A sewn-shut pocket for the one sentence you want to keep close." },
-      { slug: "rest-note-cufflinks", why: "Permission to pause. The rest is still part of the song." },
+      { slug: "treblemaker-cuffs", why: "Permission to pause. The rest is still part of the song." },
     ],
   },
   {
@@ -70,7 +70,7 @@ const RULES: Rule[] = [
     movement: "nocturne",
     intro: "It sounds like you need a rest more than a look. Here are a few pieces that remind you to take one.",
     picks: [
-      { slug: "rest-note-cufflinks", why: "A musical rest at the wrist, for people who are bad at stopping." },
+      { slug: "treblemaker-cuffs", why: "A musical rest at the wrist, for people who are bad at stopping." },
       { slug: "dew-drop-earrings", why: "A small practice of noticing, ten minutes at a time." },
       { slug: "first-light-gloves", why: "For choosing good morning over goodnight." },
     ],

@@ -16,7 +16,7 @@ export function DesignNotes({ notes }: { notes: string }) {
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-between py-4 text-left"
       >
-        <span className="display text-lg">AI design notes</span>
+        <span className="display text-lg">Design notes</span>
         <span aria-hidden className="text-accent-ink text-xl leading-none">{open ? "−" : "+"}</span>
       </button>
       <AnimatePresence initial={false}>
@@ -31,9 +31,6 @@ export function DesignNotes({ notes }: { notes: string }) {
             className="overflow-hidden"
           >
             <p className="pb-5 text-muted prose-measure">{notes}</p>
-            <p className="pb-5 text-sm text-muted">
-              Written with our AI collaborator from the brief for this piece, then edited by the atelier.
-            </p>
           </motion.div>
         )}
       </AnimatePresence>
