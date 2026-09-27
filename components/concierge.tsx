@@ -31,7 +31,8 @@ const greeting = () => {
 };
 
 function findProducts(q: string) {
-  const words = q.toLowerCase().split(/[^a-z]+/).filter((w) => w.length > 2);
+  const stop = new Set(["the", "how", "much", "what", "tell", "about", "price", "cost", "info", "and", "for", "you", "your", "does", "this", "that", "with"]);
+  const words = q.toLowerCase().split(/[^a-z]+/).filter((w) => w.length > 2 && !stop.has(w));
   if (!words.length) return [];
   return products
     .map((p) => {
@@ -158,6 +159,10 @@ export function Concierge() {
       return;
     }
     const intent = detectIntent(text);
+    if (intent === "product") {
+      say({ from: "bot", text: "Here's what I found.", products: findProducts(text).map((p) => ({ product: p })) });
+      return;
+    }
     if (intent) return choose(intent);
     const r = stylist(text);
     say({ from: "bot", text: `${r.intro} A few pieces from ${movementName(r.movement)}.`, products: r.picks });
