@@ -1,0 +1,2 @@
+// Runs before paint: persisted theme, else local time (before 6pm → Aubade), else Aubade.
+export const themeInitScript = `(function(){try{var t=JSON.parse(localStorage.getItem('ai-theme')||'null');if(t!=='aubade'&&t!=='nocturne'){var h=new Date().getHours();t=(h>=6&&h<18)?'aubade':'nocturne';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='aubade';}})();`;

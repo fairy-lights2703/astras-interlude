@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* Registered so the theme crossfade can animate the custom properties themselves */
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #efe3e6; }
+@property --surface { syntax: "<color>"; inherits: true; initial-value: #f7f0ee; }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: #3b2142; }
+@property --muted { syntax: "<color>"; inherits: true; initial-value: #5e4a66; }
+@property --accent-ink { syntax: "<color>"; inherits: true; initial-value: #7a5a1e; }
+@property --line { syntax: "<color>"; inherits: true; initial-value: #c9b9c6; }
+
+:root {
+  --night-base: #171a2e;
+  --night-surface: #232742;
+  --dawn-base: #efe3e6;
+  --dawn-surface: #f7f0ee;
+  --ink-plum: #3b2142;
+  --ink-lilac: #edeaf2;
+  --accent-gold: #b8924a;
+  --accent-mauve: #8b7897;
+  --stardust: #c6cbd8;
+}
+
+[data-theme="aubade"] {
+  --bg: var(--dawn-base);
+  --surface: var(--dawn-surface);
+  --ink: var(--ink-plum);
+  --muted: #5e4a66; /* mauve darkened to pass AA on dawn */
+  --accent-ink: #7a5a1e; /* gold darkened for text on dawn */
+  --line: #c9b9c6;
+  color-scheme: light;
+}
+
+[data-theme="nocturne"] {
+  --bg: var(--night-base);
+  --surface: var(--night-surface);
+  --ink: var(--ink-lilac);
+  --muted: #b3a8c0; /* mauve lifted to pass AA on night */
+  --accent-ink: #d4b26e;
+  --line: #3a3f5e;
+  color-scheme: dark;
+}
+
+html {
+  transition: --bg 700ms ease, --surface 700ms ease, --ink 700ms ease, --muted 700ms ease,
+    --accent-ink 700ms ease, --line 700ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { transition: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent-gold);
+  --color-accent-ink: var(--accent-ink);
+  --color-mauve: var(--accent-mauve);
+  --color-line: var(--line);
+  --color-stardust: var(--stardust);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-work-sans), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 350;
+  font-optical-sizing: auto;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.prose-measure { max-width: 68ch; }
+
+a { color: inherit; }
+
+.link {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+.link:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.hairline { border: 0; border-top: 1px solid var(--line); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.95rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+.btn:hover { opacity: 0.88; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn-ghost:hover { border-color: var(--ink); opacity: 1; }
+
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.875rem;
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--accent-gold); }
+
+.field {
+  width: 100%;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+}
+.field::placeholder { color: var(--muted); opacity: 0.8; }
+
+.pullquote {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+}
